@@ -1,6 +1,7 @@
 import { Form } from "react-router-dom"
 import { getAddressLocations } from "../data/geolocation";
 import AddressInfo from "../components/AddressInfo";
+import Map from "../components/Map";
 import background from "../assets/pattern-bg.png";
 
 
@@ -47,6 +48,8 @@ function Index() {
             </Form>
         </div>
         <AddressInfo/>
+        <Map/>
+
     </>
   )
 }
