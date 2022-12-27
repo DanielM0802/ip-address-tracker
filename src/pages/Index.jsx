@@ -25,29 +25,31 @@ function Index() {
         <div 
         className="h-72"
         style={{ 
-            backgroundImage: `url(${background})` 
+            background: `url(${background}) no-repeat`, 
+            backgroundSize: 'cover'
         }}>
-            <h1 className="text-2xl font-bold text-center">IP Address Tracker</h1>
+            <h1 className="text-3xl text-white font-bold text-center my-9">IP Address Tracker</h1>
             <Form
-                className="flex justify-center"
+                className="flex flex-col items-center"
                 method="post"
             >
-                <div className="w-4/5 sm:w-2/5">
+                <div className="w-11/12 sm:w-2/5">
                     <input 
-                        className="bg-red-600 w-11/12 rounded-l-lg"
+                        className="h-10 w-11/12 rounded-l-lg outline-none px-4"
                         type="text" 
                         name="ip_address"
                     />
                     <input 
-                        className="bg-red-600 w-1/12 rounded-r-lg"
+                        className="bg-gray-600 h-10 w-1/12 rounded-r-lg"
                         type="submit" 
                         value=">" 
                     
                     />
-                </div>
+                </div>    
+                    <AddressInfo/>
+
             </Form>
         </div>
-        <AddressInfo/>
         <Map/>
 
     </>
