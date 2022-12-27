@@ -5,6 +5,12 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
+    fontSize: {
+      sm: ['13px', '15px'],
+      base: ['18px', '21px'],
+      lg: ['26px', '31px'],
+      xl: ['31px', '37px'],
+    },
     extend: {
       fontFamily: {
         'rubik': ['Rubik', 'sans-serif']

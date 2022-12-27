@@ -28,14 +28,14 @@ function Index() {
             background: `url(${background}) no-repeat`, 
             backgroundSize: 'cover'
         }}>
-            <h1 className="font-rubik text-3xl text-white font-semibold text-center my-9">IP Address Tracker</h1>
+            <h1 className="font-rubik text-xl text-white font-semibold text-center my-9">IP Address Tracker</h1>
             <Form
                 className="flex flex-col items-center"
                 method="post"
             >
                 <div className="w-11/12 sm:w-2/5">
                     <input 
-                        className="font-rubik h-10 w-11/12 rounded-l-lg outline-none px-4"
+                        className="font-rubik text-base h-10 w-11/12 rounded-l-lg outline-none px-4"
                         type="text" 
                         name="ip_address"
                     />
