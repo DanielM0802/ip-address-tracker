@@ -3,6 +3,7 @@ import { getAddressLocations } from "../data/geolocation";
 import AddressInfo from "../components/AddressInfo";
 import Map from "../components/Map";
 import background from "../assets/pattern-bg.png";
+import iconArrow from "../assets/icon-arrow.svg";
 
 
 export async function loader(){
@@ -35,14 +36,20 @@ function Index() {
             >
                 <div className="w-11/12 sm:w-2/5">
                     <input 
-                        className="font-rubik font-normal text-base h-10 w-11/12 rounded-l-lg outline-none px-4"
+                        className="font-rubik font-normal text-base h-10 w-11/12 rounded-l-lg outline-none px-4 cursor-pointer"
                         type="text" 
                         name="ip_address"
                     />
-                    <input 
-                        className="bg-gray-600 h-10 w-1/12 rounded-r-lg"
+                    <input
+
+                        className="h-10 w-1/12 rounded-r-lg bg-veryDarkGray cursor-pointer"
+                        style={{ 
+                            backgroundImage: `url(${iconArrow})`, 
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center'
+                        }} 
                         type="submit" 
-                        value=">" 
+                        value=" " 
                     
                     />
                 </div>    
