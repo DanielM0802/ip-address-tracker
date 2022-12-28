@@ -35,7 +35,7 @@ function Index() {
             >
                 <div className="w-11/12 sm:w-2/5">
                     <input 
-                        className="font-rubik text-base h-10 w-11/12 rounded-l-lg outline-none px-4"
+                        className="font-rubik font-normal text-base h-10 w-11/12 rounded-l-lg outline-none px-4"
                         type="text" 
                         name="ip_address"
                     />
