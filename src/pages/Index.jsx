@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom"
+import {useState, useEffect} from 'react';
 import { getAddressLocations } from "../data/geolocation";
 import AddressInfo from "../components/AddressInfo";
 import Map from "../components/Map";
@@ -6,21 +6,34 @@ import background from "../assets/pattern-bg.png";
 import iconArrow from "../assets/icon-arrow.svg";
 
 
-export async function loader(){
-    const data = await getAddressLocations('8.8.8.8');
-    console.log(data)
-    return ''
-}
-
-export async function action({request}){
-    console.log('form enviado')
-    const formData = await request.formData();
-    const datos = Object.fromEntries(formData);
-    console.log(datos)
-    return ''
-}
 
 function Index() {
+
+    const [ip, setIp] = useState('');
+    const [addressData, setAddressData] = useState(null);
+
+    useEffect( () => {
+        loadData('0');
+    }, []);
+
+    const loadData = async (ip) => {
+        if (ip.trim()=='') {
+            ip = 0
+        }
+        const data = await getAddressLocations(ip);
+        if (!Object.keys(data).includes('location')) {
+            console.log('Error!!!')
+            return;
+        }
+        setAddressData(data);
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        loadData(ip);
+    }
+
+
   return (
     <>
         <div 
@@ -30,15 +43,17 @@ function Index() {
             backgroundSize: 'cover'
         }}>
             <h1 className="font-rubik text-xl text-white font-semibold text-center my-9">IP Address Tracker</h1>
-            <Form
+            <form
                 className="flex flex-col items-center"
-                method="post"
+                onSubmit={handleSubmit}
             >
                 <div className="w-11/12 sm:w-2/5">
                     <input 
                         className="font-rubik font-normal text-base h-10 w-11/12 rounded-l-lg outline-none px-4 cursor-pointer"
                         type="text" 
                         name="ip_address"
+                        onChange= {e => setIp(e.target.value)}
+                        value = {ip}
                     />
                     <input
 
@@ -53,11 +68,11 @@ function Index() {
                     
                     />
                 </div>    
-                    <AddressInfo/>
+                {addressData ? <AddressInfo data={addressData} /> : null}
 
-            </Form>
+            </form>
         </div>
-        <Map/>
+        {addressData ? <Map position={[addressData.location.lat, addressData.location.lng ]} /> : null}
 
     </>
   )
